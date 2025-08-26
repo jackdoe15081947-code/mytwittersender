@@ -1,22 +1,10 @@
 [
     {
-        "title": "This is an hourly post!",
+        "title": "@RahulGandhi I plan to build an open source database of the electoral rolls in order to bring transparency and credibility to the system. I would greatly appreciate your assistance, please help me. #transparentelections",
         "time": "hourly"
     },
     {
-        "title": "This is another hourly post with a 10 min offset!",
+        "title": "@INCIndia I plan to build an open source database of the electoral rolls in order to bring transparency and credibility to the system. I would greatly appreciate your assistance, please help me. #transparentelections",
         "time": "hourly"
-    },
-    {
-        "title": "A specific post for 7:00 AM UTC.",
-        "time": "7:00 AM"
-    },
-    {
-        "title": "This is a quarterly scheduled post.",
-        "time": "quarterly"
-    },
-    {
-        "title": "Another specific post for 9:45 AM UTC.",
-        "time": "9:45 AM"
     }
 ]
