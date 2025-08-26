@@ -2,17 +2,15 @@ name: Daily Twitter Scheduler
 
 on:
   schedule:
-    # Runs everyday at 2:30 AM UTC
     - cron: '30 2 * * *'
   workflow_dispatch:
-    # Allows manual triggering of the workflow from the GitHub UI
 
 jobs:
   run-and-upload:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write # Grant write permission to the GITHUB_TOKEN for pushing changes
+      contents: write
 
     steps:
     - name: Checkout repository
@@ -21,7 +19,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.x' # Or specify a precise version like '3.9' or '3.10'
+        python-version: '3.x'
 
     - name: Install dependencies
       run: |
@@ -33,18 +31,14 @@ jobs:
         TWITTER_EMAIL: ${{ secrets.TWITTER_EMAIL }}
         TWITTER_PASSWORD: ${{ secrets.TWITTER_PASSWORD }}
         TWITTER_USERNAME: ${{ secrets.TWITTER_USERNAME }}
-      run: |
-        python main.py
+      run: python main.py
 
     - name: Configure Git and Push Login Data
-      # Only run if the login data directory was actually created or modified
-      if: success() && -d 'login/default/login_data'
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        git add login/default/login_data
-        # Check if there are any changes to commit before committing
-        git diff-index --quiet HEAD || git commit -m "Update Playwright login session data"
+        git add login/default/login_data || true
+        git diff --cached --quiet || git commit -m "Update Playwright login session data"
         git push
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token has write access due to permissions: contents: write
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
