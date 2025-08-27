@@ -1,8 +1,6 @@
 name: Generate Schedule File
 
 on:
-  schedule:
-    - cron: '0 2 * * *' # Example: Run daily at 02:00 UTC, adjust as needed
   workflow_dispatch:
 
 jobs:
