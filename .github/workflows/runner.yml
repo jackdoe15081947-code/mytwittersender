@@ -31,7 +31,7 @@ jobs:
         TWITTER_EMAIL: ${{ secrets.TWITTER_EMAIL }}
         TWITTER_PASSWORD: ${{ secrets.TWITTER_PASSWORD }}
         TWITTER_USERNAME: ${{ secrets.TWITTER_USERNAME }}
-      run: python main.py
+      run: python runner.py
 
     - name: Configure Git and Push Login Data
       run: |
