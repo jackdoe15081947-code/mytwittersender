@@ -34,7 +34,7 @@ def schedule_posts_from_json(page: Page):
             continue
 
         print(f"\n--- Scheduling Post {i+1}: '{tweet_text}' for {timestamp_str} ---")
-
+        
         # Parse timestamp and format for twitter scheduler
         dt_obj = datetime.fromisoformat(timestamp_str)
         schedule_date = dt_obj.strftime("%Y-%m-%d")
@@ -52,8 +52,7 @@ def schedule_posts_from_json(page: Page):
 
         print(f"🔹 Typing tweet: {tweet_text}")
         page.fill('div[data-testid="tweetTextarea_0"]', tweet_text)
-        page.click('div[data-testid="tweetTextarea_0"]') # Click the textbox after filling
-        log_page(page, f"{i+1}_3_text_filled_and_clicked")
+        log_page(page, f"{i+1}_3_text_filled")
 
         print("🔹 Opening schedule modal...")
         page.click("button[data-testid='scheduleOption']")
